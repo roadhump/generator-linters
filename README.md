@@ -14,6 +14,7 @@ Now support
 * [editorconfig](http://editorconfig.org)
 
 ```
+$ npm link /path/to/generator-linters
 $ yo linters
 ```
 
