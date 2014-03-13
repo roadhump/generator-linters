@@ -19,8 +19,8 @@ $ yo linters
 
 ## ToDo
 
-- [ ] add ignore files configuration
-- [ ] add [beatutify-js](https://github.com/einars/js-beautify) support
+* add ignore files configuration
+* add [beatutify-js](https://github.com/einars/js-beautify) support
 
 ## License
 
