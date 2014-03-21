@@ -1,6 +1,6 @@
 # generator-linters 
 
-My personal [Yeoman](http://yeoman.io) generator for JavaScript linters and other code quality tools configurations.
+[Yeoman](http://yeoman.io) generator for JavaScript linters and other code quality tools configurations.
 
 ## Overview
 

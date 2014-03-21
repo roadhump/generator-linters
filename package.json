@@ -1,12 +1,12 @@
 {
   "name": "generator-linters",
-  "version": "0.0.0",
-  "description": "Yeoman generator",
+  "version": "0.1.0",
+  "description": "Yeoman generator generator for JavaScript linters and other code quality tools configurations.",
   "license": "MIT",
   "main": "app/index.js",
   "repository": "roadhump/generator-linters",
   "author": {
-    "name": "Aliaksei",
+    "name": "Aliaksei Shytkin",
     "email": "e79eas@gmail.com",
     "url": "https://github.com/roadhump"
   },
