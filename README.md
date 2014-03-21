@@ -1,23 +1,24 @@
 # generator-linters 
 
-> [Yeoman](http://yeoman.io) generator
+My personal [Yeoman](http://yeoman.io) generator for linters and other code quality tools configurations.
 
-# Overview
-
-My personal generator for linters and other code quality tools configurations.
+## Overview
 
 Now support
 
-* [jshint](http://jshint.com)
-* [eslint](http://eslint.org)
-* [jscs](https://github.com/mdevils/node-jscs)
-* [editorconfig](http://editorconfig.org)
+* [JSHint](http://jshint.com)
+* [ESLint](http://eslint.org)
+* [JSCS](https://github.com/mdevils/node-jscs)
+* [EditorConfig](http://editorconfig.org)
+* [SublimeLinter](http://sublimelinter.readthedocs.org)
+
+## Installation
 
 ```
 $ npm clone https://github.com/roadhump/generator-linters /path/to/linters
 $ cd /path/to/linters
 $ npm link
-$ cd /path/to/MyProject
+$ cd /path/to/myProject
 $ yo linters
 ```
 
