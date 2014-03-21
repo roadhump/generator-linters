@@ -1,6 +1,6 @@
 {
   "name": "generator-linters",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Yeoman generator generator for JavaScript linters and other code quality tools configurations.",
   "license": "MIT",
   "main": "app/index.js",
@@ -20,7 +20,16 @@
     "app"
   ],
   "keywords": [
-    "yeoman-generator"
+    "yeoman-generator",
+    "linter",
+    "code quality",
+    "code style",
+    "jshint",
+    "eslint",
+    "jscs",
+    "sublimelinter",
+    "js-beautify",
+    "editorconfig"
   ],
   "dependencies": {
     "yeoman-generator": "~0.16.0",

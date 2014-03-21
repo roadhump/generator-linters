@@ -16,10 +16,7 @@ Now support
 ## Installation
 
 ```
-$ npm clone https://github.com/roadhump/generator-linters /path/to/linters
-$ cd /path/to/linters
-$ npm link
-$ cd /path/to/myProject
+$ npm install generator-linters
 $ yo linters
 ```
 
