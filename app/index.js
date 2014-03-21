@@ -15,8 +15,8 @@ module.exports = yeoman.generators.Base.extend({
             type: 'checkbox',
             name: 'tools',
             message: 'What JavaScript linter or tool should be used?',
-            default: ['eslint', 'jscs', 'editorconfig'],
-            choices: ['eslint', 'jshint', 'jscs', 'editorconfig']
+            default: ['eslint', 'jscs', 'editorconfig', 'sublimelinter'],
+            choices: ['eslint', 'jshint', 'jscs', 'editorconfig', 'sublimelinter']
         }, {
             type: 'checkbox',
             name: 'environments',
@@ -54,6 +54,11 @@ module.exports = yeoman.generators.Base.extend({
         this.prompt(prompts, function(props) {
 
             this.opts = props;
+            this.opts.excludes = [
+                '*/node_modules/**',
+                '*/bower_components/**',
+                '*/vendor/**'
+            ];
             done();
         }.bind(this));
     },
@@ -61,15 +66,18 @@ module.exports = yeoman.generators.Base.extend({
     app: function() {
 
         var files = {
-            'editorconfig': 'editorconfig',
-            'jshint': 'jshintrc',
-            'eslint': 'eslintrc',
-            'jscs': 'jscs.json'
+            'editorconfig': ['editorconfig'],
+            'jshint': ['jshintrc', 'jshintignore'],
+            'eslint': ['eslintrc', 'eslintignore'],
+            'jscs': ['jscsrc'],
+            'sublimelinter': ['sublimelinterrc']
         };
         Object.keys(files).forEach(function(toolName) {
             if (this.opts.tools.indexOf(toolName) >= 0) {
-                var fileName = files[toolName];
-                this.copy(fileName, '.' + fileName);
+                var fileNames = files[toolName];
+                fileNames.forEach(function(fileName) {
+                    this.copy(fileName, '.' + fileName);
+                }.bind(this));
             }
         }.bind(this));
     }

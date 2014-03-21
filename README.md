@@ -14,14 +14,18 @@ Now support
 * [editorconfig](http://editorconfig.org)
 
 ```
-$ npm link /path/to/generator-linters
+$ npm clone https://github.com/roadhump/generator-linters /path/to/linters
+$ cd /path/to/linters
+$ npm link
+$ cd /path/to/MyProject
 $ yo linters
 ```
 
 ## ToDo
 
-* add ignore files configuration
-* add [beatutify-js](https://github.com/einars/js-beautify) support
+- [ ] add ignore files configuration
+- [ ] do not override rules in environments
+- [ ] add [beatutify-js](https://github.com/einars/js-beautify) support
 
 ## License
 

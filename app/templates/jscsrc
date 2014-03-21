@@ -142,5 +142,5 @@
         "checkRedundantParams": true,
         "requireParamTypes": true
     },
-    "excludeFiles": ["node_modules/**"]
+    "excludeFiles": <%= JSON.stringify(opts.excludes) %>
 }

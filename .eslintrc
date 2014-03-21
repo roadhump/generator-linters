@@ -35,7 +35,7 @@
         "no-fallthrough": 2,
         "no-floating-decimal": 2,
         "no-func-assign": 2,
-        "no-global-strict": 2,
+        // "no-global-strict": 2,
         "no-implied-eval": 2,
         "no-invalid-regexp": 2,
         "no-iterator": 2,
