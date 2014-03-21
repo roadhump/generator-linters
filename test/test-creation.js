@@ -37,6 +37,10 @@ describe('linters generator', function() {
                 'editorconfig',
                 'sublimelinter',
                 'js-beautify'
+            ],
+            environments: [
+                'browser',
+                'node'
             ]
         });
         this.app.run({}, function() {
