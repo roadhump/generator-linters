@@ -25,7 +25,6 @@ $ yo linters
 
 ## ToDo
 
-- [ ] add ignore files configuration
 - [ ] do not override rules in environments
 
 ## License
