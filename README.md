@@ -23,6 +23,10 @@ $ cd /path/to/myProject
 $ yo linters
 ```
 
+## Notes
+
+It seems that only one Sublime Text plugin [JsFormat](https://github.com/jdc0589/JsFormat) works correct with generated `.jsbeautifyrc` file, so I suggest to use it if Sublime Text is your editor.
+
 ## ToDo
 
 - [ ] do not override rules in environments
