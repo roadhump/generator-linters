@@ -25,7 +25,8 @@ describe('linters generator', function() {
             '.editorconfig',
             '.jshintrc',
             '.jshintignore',
-            '.sublimelinterrc'
+            '.sublimelinterrc',
+            '.jsbeautifyrc'
         ];
 
         helpers.mockPrompt(this.app, {
@@ -34,7 +35,8 @@ describe('linters generator', function() {
                 'jscs',
                 'jshint',
                 'editorconfig',
-                'sublimelinter'
+                'sublimelinter',
+                'js-beautify'
             ]
         });
         this.app.run({}, function() {

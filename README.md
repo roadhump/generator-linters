@@ -1,6 +1,6 @@
 # generator-linters 
 
-My personal [Yeoman](http://yeoman.io) generator for linters and other code quality tools configurations.
+My personal [Yeoman](http://yeoman.io) generator for JavaScript linters and other code quality tools configurations.
 
 ## Overview
 
@@ -11,6 +11,7 @@ Now support
 * [JSCS](https://github.com/mdevils/node-jscs)
 * [EditorConfig](http://editorconfig.org)
 * [SublimeLinter](http://sublimelinter.readthedocs.org)
+* [JS Beautifier](http://jsbeautifier.org)
 
 ## Installation
 
@@ -26,7 +27,6 @@ $ yo linters
 
 - [ ] add ignore files configuration
 - [ ] do not override rules in environments
-- [ ] add [beatutify-js](https://github.com/einars/js-beautify) support
 
 ## License
 
