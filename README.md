@@ -27,6 +27,7 @@ It seems that only one Sublime Text plugin [JsFormat](https://github.com/jdc0589
 ## ToDo
 
 - add [esformatter](https://github.com/millermedeiros/esformatter)
+- add peerDependencies to linters
 
 ## License
 

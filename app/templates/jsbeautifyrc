@@ -6,7 +6,6 @@
     <% } else { %>
     "indent_with_tabs": true,
     <% } %>
-
     "preserve_newlines": true,
     "max_preserve_newlines": 2,
 

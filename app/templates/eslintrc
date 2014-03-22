@@ -44,9 +44,9 @@
         "no-lone-blocks": 2,
         "no-loop-func": 2,
         <% if (opts.environments.indexOf('node') >= 0) { %>
-            "no-mixed-requires": 2,
+        "no-mixed-requires": 2,
         <% } else { %>
-            "no-mixed-requires": [0, false],
+        "no-mixed-requires": [0, false],
         <% } %>
         "no-multi-str": 2,
         "no-native-reassign": 2,
@@ -85,7 +85,7 @@
         "no-wrap-func": 2,
         "no-yoda": 2,
 
-        "block-scoped-var": 0, // buggy, need to turn on later
+        "block-scoped-var": 0,
         "brace-style": [1, "1tbs"],
         "camelcase": 2,
         "complexity": [0, 6],
