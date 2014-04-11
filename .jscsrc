@@ -125,9 +125,9 @@
     "disallowMultipleLineStrings": true,
     "disallowMultipleLineBreaks": true,
     "validateLineBreaks": "LF",
-
+    
     "validateQuoteMarks": "'",
-
+    
     "validateIndentation": 4,
     "disallowMixedSpacesAndTabs": true,
     "disallowTrailingWhitespace": true,
@@ -142,5 +142,5 @@
         "checkRedundantParams": true,
         "requireParamTypes": true
     },
-    "excludeFiles": ["node_modules/**"]
+    "excludeFiles": ["**/node_modules/**","**/bower_components/**","**/vendor/**"]
 }

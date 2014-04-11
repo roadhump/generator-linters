@@ -10,10 +10,10 @@
         "no-array-constructor": 2,
         "no-bitwise": 1,
         "no-caller": 2,
-        "no-catch-shadow": 2,
+        "no-catch-shadow": 0,
         "no-comma-dangle": 2,
         "no-cond-assign": 2,
-        "no-console": 2,
+        "no-console": 0,
         "no-constant-condition": 2,
         "no-control-regex": 2,
         "no-debugger": 2,
@@ -35,7 +35,7 @@
         "no-fallthrough": 2,
         "no-floating-decimal": 2,
         "no-func-assign": 2,
-        // "no-global-strict": 2,
+        "no-global-strict": 0,
         "no-implied-eval": 2,
         "no-invalid-regexp": 2,
         "no-iterator": 2,
@@ -43,7 +43,9 @@
         "no-labels": 2,
         "no-lone-blocks": 2,
         "no-loop-func": 2,
-        "no-mixed-requires": [0, false],
+        
+        "no-mixed-requires": 2,
+        
         "no-multi-str": 2,
         "no-native-reassign": 2,
         "no-negated-in-lhs": 2,
@@ -75,13 +77,13 @@
         "no-underscore-dangle": 2,
         "no-unreachable": 2,
         "no-unused-expressions": 2,
-        "no-unused-vars": [2, "all"],
+        "no-unused-vars": [2, {"vars": "all", "args": "all"}],
         "no-use-before-define": 2,
         "no-with": 2,
         "no-wrap-func": 2,
         "no-yoda": 2,
 
-        "block-scoped-var": 0, // buggy, need to turn on later
+        "block-scoped-var": 0,
         "brace-style": [1, "1tbs"],
         "camelcase": 2,
         "complexity": [0, 6],
@@ -113,6 +115,7 @@
         "strict": 2,
         "use-isnan": 2,
         "valid-jsdoc": 0,
+        "valid-typeof": 2,
         "wrap-iife": 1,
         "wrap-regex": 0
     }
