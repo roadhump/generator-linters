@@ -113,9 +113,9 @@ module.exports = yeoman.generators.Base.extend({
 
             this.opts = props;
             this.opts.excludes = [
-                '*/node_modules/**',
-                '*/bower_components/**',
-                '*/vendor/**'
+                '**/node_modules/**',
+                '**/bower_components/**',
+                '**/vendor/**'
             ];
             done();
         }.bind(this));
