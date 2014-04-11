@@ -79,7 +79,7 @@
         "no-underscore-dangle": 2,
         "no-unreachable": 2,
         "no-unused-expressions": 2,
-        "no-unused-vars": [2, "all"],
+        "no-unused-vars": [2, {"vars": "all", "args": "all"}],
         "no-use-before-define": 2,
         "no-with": 2,
         "no-wrap-func": 2,
@@ -117,6 +117,7 @@
         "strict": 2,
         "use-isnan": 2,
         "valid-jsdoc": 0,
+        "valid-typeof": 2,
         "wrap-iife": 1,
         "wrap-regex": 0
     }
