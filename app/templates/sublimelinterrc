@@ -8,6 +8,9 @@
         },
         "jshint": {
             "excludes": <%= JSON.stringify(opts.excludes) %>
+        },
+        "scss": {
+            "excludes": <%= JSON.stringify(opts.excludes) %>
         }
     }
 }

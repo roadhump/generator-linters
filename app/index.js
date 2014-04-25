@@ -44,6 +44,12 @@ module.exports = yeoman.generators.Base.extend({
                 url: 'http://jsbeautifier.org',
                 files: ['jsbeautifyrc'],
                 isDefault: true
+            },
+            'scss-lint': {
+                title: 'SCSS-Lint',
+                url: 'https://github.com/causes/scss-lint',
+                files: ['scss-lint.yml'],
+                isDefault: false
             }
         };
     },
@@ -124,11 +130,12 @@ module.exports = yeoman.generators.Base.extend({
     app: function() {
 
         this.opts.tools.forEach(function(toolName) {
-
-            var fileNames = this.tools[toolName].files;
-            fileNames.forEach(function(fileName) {
-                this.copy(fileName, '.' + fileName);
-            }.bind(this));
+            if (this.tools[toolName]) {
+                var fileNames = this.tools[toolName].files;
+                fileNames.forEach(function(fileName) {
+                    this.copy(fileName, '.' + fileName);
+                }.bind(this));
+            }
         }.bind(this));
     }
 });

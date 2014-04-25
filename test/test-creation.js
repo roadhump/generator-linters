@@ -8,6 +8,7 @@ var helpers = require('yeoman-generator').test;
 var assert = require('chai').assert;
 var cjson = require('cjson');
 var ini = require('ini');
+var yaml = require('js-yaml');
 
 describe('linters generator', function() {
     beforeEach(function(done) {
@@ -32,7 +33,8 @@ describe('linters generator', function() {
             '.jshintrc': 'cjson',
             '.jshintignore': 'ini',
             '.sublimelinterrc': 'json',
-            '.jsbeautifyrc': 'json'
+            '.jsbeautifyrc': 'json',
+            '.scss-lint.yml': 'yaml'
         };
 
         helpers.mockPrompt(this.app, {
@@ -42,7 +44,8 @@ describe('linters generator', function() {
                 'jshint',
                 'editorconfig',
                 'sublimelinter',
-                'js-beautify'
+                'js-beautify',
+                'scss-lint'
             ]
         });
 
@@ -66,7 +69,13 @@ describe('linters generator', function() {
                     });
                     break;
 
-                // no-default
+                case 'yaml':
+                    assert.doesNotThrow(function() {
+                        yaml.safeLoad(fs.readFileSync(filename).toString());
+                    });
+                    break;
+
+                    // no-default
             }
         };
 

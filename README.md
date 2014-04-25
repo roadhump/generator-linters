@@ -12,6 +12,7 @@ Now support
 * [EditorConfig](http://editorconfig.org)
 * [SublimeLinter](http://sublimelinter.readthedocs.org)
 * [JS Beautifier](http://jsbeautifier.org)
+* [SCSS-Lint](https://github.com/causes/scss-lint)
 
 ## Installation
 
