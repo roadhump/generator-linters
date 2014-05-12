@@ -6,8 +6,7 @@
         "while",
         "do",
         "try",
-        "catch",
-        "default"
+        "catch"
     ],
     "requireSpaceAfterKeywords": [
         "if",
