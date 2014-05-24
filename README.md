@@ -1,3 +1,7 @@
+[![Build Status](https://travis-ci.org/roadhump/generator-linters.svg?branch=master)](https://travis-ci.org/roadhump/generator-linters)
+
+[![NPM version](https://badge.fury.io/js/generator-linters.svg)](http://badge.fury.io/js/generator-linters)
+
 # generator-linters 
 
 [Yeoman](http://yeoman.io) generator for JavaScript linters and other code quality tools configurations.
@@ -28,4 +32,3 @@ It seems that only one Sublime Text plugin [JsFormat](https://github.com/jdc0589
 ## License
 
 MIT
-
