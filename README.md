@@ -28,3 +28,4 @@ It seems that only one Sublime Text plugin [JsFormat](https://github.com/jdc0589
 ## License
 
 MIT
+
