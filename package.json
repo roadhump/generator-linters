@@ -14,7 +14,7 @@
     "node": ">=0.10.0"
   },
   "scripts": {
-    "test": "mocha"
+    "test": "jscs . && eslint . && mocha"
   },
   "files": [
     "app"
@@ -40,7 +40,9 @@
     "cjson": "^0.3.0",
     "chai": "^1.9.1",
     "ini": "^1.1.0",
-    "js-yaml": "^3.0.2"
+    "js-yaml": "^3.0.2",
+    "eslint": "^0.6.2",
+    "jscs": "^1.4.5"
   },
   "peerDependencies": {
     "yo": ">=1.0.0"
