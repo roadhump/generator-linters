@@ -86,18 +86,27 @@ module.exports = yeoman.generators.Base.extend({
             name: 'environments',
             message: 'Choose JavaScript environments',
             default: ['browser'],
-            choices: ['browser', 'node', 'amd']
+            choices: ['browser', 'node', 'amd'],
+            when: function(res) {
+                return res.tools.indexOf('jshint') >= 0 || res.tools.indexOf('eslint') >= 0;
+            }
         }, {
             type: 'list',
             name: 'indentStyle',
             message: 'Style of indent',
             default: 'space',
-            choices: ['space', 'tab']
+            choices: ['space', 'tab'],
+            when: function(res) {
+                return !(res.tools.length === 1 && res.tools[0] === 'sublimelinter');
+            }
         }, {
             type: 'input',
             name: 'indentSize',
             message: 'Size of indent',
-            default: 4
+            default: 4,
+            when: function(res) {
+                return !(res.tools.length === 1 && res.tools[0] === 'sublimelinter');
+            }
         }, {
             type: 'list',
             name: 'quotes',
@@ -112,7 +121,12 @@ module.exports = yeoman.generators.Base.extend({
             }, {
                 name: 'double',
                 value: 'double'
-            }]
+            }],
+            when: function(res) {
+                return ['eslint', 'jshint', 'jscs', 'scss-lint'].some(function(v) {
+                    return res.tools.indexOf(v) >= 0;
+                });
+            }
         }];
 
         this.prompt(prompts, function(props) {
