@@ -27,7 +27,7 @@ describe('linters generator', function() {
     it('creates expected files with correct formats', function(done) {
         var expected = {
             '.eslintrc': 'cjson',
-            '.eslintignore': 'json',
+            '.eslintignore': 'ini',
             '.jscsrc': 'cjson',
             '.editorconfig': 'ini',
             '.jshintrc': 'cjson',
@@ -75,7 +75,7 @@ describe('linters generator', function() {
                     });
                     break;
 
-                    // no-default
+                    // no default
             }
         };
 

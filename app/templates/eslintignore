@@ -1,1 +1,1 @@
-<%= JSON.stringify(opts.excludes) %>
+<%= opts.excludes.join('\n') %>
