@@ -15,8 +15,9 @@ linters:
         enabled: true
     DuplicateProperty:
         enabled: true
-    DuplicateRoot:
+    ElsePlacement:
         enabled: true
+        style: same_line
     EmptyLineBetweenBlocks:
         enabled: true
         ignore_single_line_blocks: true
@@ -24,8 +25,16 @@ linters:
         enabled: true
     FinalNewline:
         enabled: true
-    HexFormat:
-        enabled: false
+
+    HexLength:
+        enabled: true
+        style: short
+    HexNotation:
+        enabled: true
+        style: lowercase
+    HexValidaion:
+        enabled: true
+
     IdWithExtraneousSelector:
         enabled: true
     Indentation:
@@ -34,6 +43,9 @@ linters:
     LeadingZero:
         enabled: true
         style: include_zero
+    MergeableSelector:
+        enabled: true
+        force_nesting: true
     NameFormat:
         enabled: true
         convention: hyphenated_lowercase
@@ -47,13 +59,15 @@ linters:
     SelectorDepth:
         enabled: true
         max_depth: 3
+    Shorthand:
+        enabled: true
     SingleLinePerSelector:
         enabled: true
     SpaceAfterComma:
         enabled: true
     SpaceAfterPropertyColon:
         enabled: true
-        allow_extra_spaces: false
+        style: once_space
     SpaceAfterPropertyName:
         enabled: true
     SpaceBeforeBrace:
