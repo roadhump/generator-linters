@@ -1,9 +1,9 @@
 exclude: <%= JSON.stringify(opts.excludes) %>
 
 linters:
-    BorderZero:
+    BangFormat:
         enabled: true
-    CapitalizationInSelector:
+    BorderZero:
         enabled: true
     ColorKeyword:
         enabled: true
@@ -59,8 +59,14 @@ linters:
     SelectorDepth:
         enabled: true
         max_depth: 3
+    SelectorFormat:
+        enabled: true
+        convention: BEM
     Shorthand:
         enabled: true
+    SingleLinePerProperty:
+        enabled: true
+        allow_single_line_rule_sets: false
     SingleLinePerSelector:
         enabled: true
     SpaceAfterComma:
@@ -79,13 +85,19 @@ linters:
     StringQuotes:
         enabled: <%= opts.quotes === "both" ? "false" : "true" %>
         <% if (opts.quotes !== "both"){ %>style: <%= opts.quotes %>_quotes<% } %>
-    TrailingSemicolonAfterPropertyValue:
+    TrailingSemicolon:
+        enabled: true
+    TrailingZero:
         enabled: true
     UnnecessaryMantissa:
+        enabled: true
+    UnnecessaryParentReference:
         enabled: true
     UrlFormat:
         enabled: false
     UrlQuotes:
+        enabled: true
+    VendorPrefixes:
         enabled: true
     ZeroUnit:
         enabled: true
