@@ -42,7 +42,7 @@
     "js-yaml": "^3.0.2",
     "jscs": "^1.4.5",
     "mocha": "^1.20.1",
-    "eslint": "^0.7.4"
+    "eslint": "^0.9.2"
   },
   "peerDependencies": {
     "yo": ">=1.0.0"
