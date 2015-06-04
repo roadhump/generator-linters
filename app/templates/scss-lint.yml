@@ -1,4 +1,4 @@
-exclude: <%= JSON.stringify(opts.excludes) %>
+exclude: <%- JSON.stringify(opts.excludes) %>
 
 linters:
     BangFormat:

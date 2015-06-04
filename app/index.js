@@ -1,39 +1,42 @@
 'use strict';
 var path = require('path');
-var chalk = require('chalk');
-var yeoman = require('yeoman-generator');
+var fs = require('fs');
 
-module.exports = yeoman.generators.Base.extend({
+var chalk = require('chalk');
+var generators = require('yeoman-generator');
+
+module.exports = generators.Base.extend({
 
     init: function() {
-        this.pkg = yeoman.file.readJSON(path.join(__dirname, '../package.json'));
+
+        this.pkg = JSON.parse(fs.readFileSync(path.join(__dirname, '../package.json')));
 
         this.tools = {
-            'eslint': {
+            eslint: {
                 title: 'ESLint',
                 url: 'http://eslint.org',
                 files: ['eslintrc', 'eslintignore'],
                 isDefault: true
             },
-            'jshint': {
+            jshint: {
                 title: 'JSHint',
                 url: 'http://jshint.com',
                 files: ['jshintrc', 'jshintignore'],
                 isDefault: false
             },
-            'jscs': {
+            jscs: {
                 title: 'JSCS',
                 url: 'https://github.com/mdevils/node-jscs',
                 files: ['jscsrc'],
                 isDefault: true
             },
-            'editorconfig': {
+            editorconfig: {
                 title: 'EditorConfig',
                 url: 'http://editorconfig.org',
                 files: ['editorconfig'],
                 isDefault: true
             },
-            'sublimelinter': {
+            sublimelinter: {
                 title: 'SublimeLinter',
                 url: 'http://sublimelinter.readthedocs.org',
                 files: ['sublimelinterrc'],
@@ -52,6 +55,7 @@ module.exports = yeoman.generators.Base.extend({
                 isDefault: false
             }
         };
+
     },
 
     askFor: function() {
@@ -61,18 +65,23 @@ module.exports = yeoman.generators.Base.extend({
         var toolsChoices = Object.keys(this.tools).map(function(name) {
 
             var tool = this.tools[name];
+
             return {
                 name: tool.title + ' ' + chalk.gray(tool.url),
                 value: name
             };
+
         }.bind(this));
 
         var toolsDefaults = Object.keys(this.tools).reduce(function(defaults, name) {
 
             if (this.tools[name].isDefault) {
+
                 defaults.push(name);
+
             }
             return defaults;
+
         }.bind(this), []);
 
         var prompts = [{
@@ -88,7 +97,9 @@ module.exports = yeoman.generators.Base.extend({
             default: ['browser'],
             choices: ['browser', 'node', 'amd'],
             when: function(res) {
+
                 return res.tools.indexOf('jshint') >= 0 || res.tools.indexOf('eslint') >= 0;
+
             }
         }, {
             type: 'list',
@@ -97,7 +108,9 @@ module.exports = yeoman.generators.Base.extend({
             default: 'space',
             choices: ['space', 'tab'],
             when: function(res) {
+
                 return !(res.tools.length === 1 && res.tools[0] === 'sublimelinter');
+
             }
         }, {
             type: 'input',
@@ -105,7 +118,9 @@ module.exports = yeoman.generators.Base.extend({
             message: 'Size of indent',
             default: 4,
             when: function(res) {
+
                 return !(res.tools.length === 1 && res.tools[0] === 'sublimelinter');
+
             }
         }, {
             type: 'list',
@@ -123,9 +138,13 @@ module.exports = yeoman.generators.Base.extend({
                 value: 'double'
             }],
             when: function(res) {
+
                 return ['eslint', 'jshint', 'jscs', 'scss-lint'].some(function(v) {
+
                     return res.tools.indexOf(v) >= 0;
+
                 });
+
             }
         }];
 
@@ -138,18 +157,28 @@ module.exports = yeoman.generators.Base.extend({
                 '**/vendor/**'
             ];
             done();
+
         }.bind(this));
+
     },
 
     app: function() {
 
         this.opts.tools.forEach(function(toolName) {
+
             if (this.tools[toolName]) {
+
                 var fileNames = this.tools[toolName].files;
+
                 fileNames.forEach(function(fileName) {
+
                     this.copy(fileName, '.' + fileName);
+
                 }.bind(this));
+
             }
+
         }.bind(this));
+
     }
 });

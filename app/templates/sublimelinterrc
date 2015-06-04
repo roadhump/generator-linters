@@ -1,16 +1,16 @@
 {
     "linters": {
         "eslint": {
-            "excludes": <%= JSON.stringify(opts.excludes) %>
+            "excludes": <%- JSON.stringify(opts.excludes) %>
         },
         "jscs": {
-            "excludes": <%= JSON.stringify(opts.excludes) %>
+            "excludes": <%- JSON.stringify(opts.excludes) %>
         },
         "jshint": {
-            "excludes": <%= JSON.stringify(opts.excludes) %>
+            "excludes": <%- JSON.stringify(opts.excludes) %>
         },
         "scss": {
-            "excludes": <%= JSON.stringify(opts.excludes) %>
+            "excludes": <%- JSON.stringify(opts.excludes) %>
         }
     }
 }

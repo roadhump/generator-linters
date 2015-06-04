@@ -157,5 +157,5 @@
     "requireSpaceAfterLineComment": true,
 
     "additionalRules": [],
-    "excludeFiles": <%= JSON.stringify(opts.excludes) %>
+    "excludeFiles": <%- JSON.stringify(opts.excludes) %>
 }
