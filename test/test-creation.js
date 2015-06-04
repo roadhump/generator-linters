@@ -32,19 +32,59 @@ describe('linters generator', function() {
 
     });
 
-    it('creates expected files with correct formats', function(done) {
+    var expected = {
+        '.eslintrc': 'cjson',
+        '.eslintignore': 'ini',
+        '.jscsrc': 'cjson',
+        '.editorconfig': 'ini',
+        '.jshintrc': 'cjson',
+        '.jshintignore': 'ini',
+        '.sublimelinterrc': 'json',
+        '.jsbeautifyrc': 'json',
+        '.scss-lint.yml': 'yaml'
+    };
 
-        var expected = {
-            '.eslintrc': 'cjson',
-            '.eslintignore': 'ini',
-            '.jscsrc': 'cjson',
-            '.editorconfig': 'ini',
-            '.jshintrc': 'cjson',
-            '.jshintignore': 'ini',
-            '.sublimelinterrc': 'json',
-            '.jsbeautifyrc': 'json',
-            '.scss-lint.yml': 'yaml'
-        };
+    var checkFormat = function(filename, format) {
+
+        switch (format) {
+            case 'cjson':
+                assert.doesNotThrow(function() {
+
+                    cjson.load(filename);
+
+                });
+                break;
+
+            case 'json':
+                assert.doesNotThrow(function() {
+
+                    JSON.parse(fs.readFileSync(filename));
+
+                });
+                break;
+
+            case 'ini':
+                assert.doesNotThrow(function() {
+
+                    ini.decode(fs.readFileSync(filename).toString());
+
+                });
+                break;
+
+            case 'yaml':
+                assert.doesNotThrow(function() {
+
+                    yaml.safeLoad(fs.readFileSync(filename).toString());
+
+                });
+                break;
+
+            // no default
+        }
+
+    };
+
+    it('creates expected files with correct formats', function(done) {
 
         helpers.mockPrompt(this.app, {
             tools: [
@@ -55,48 +95,42 @@ describe('linters generator', function() {
                 'sublimelinter',
                 'js-beautify',
                 'scss-lint'
-            ]
+            ],
+            jsx: 'no'
         });
 
-        var checkFormat = function(filename, format) {
+        this.app.run(function() {
 
-            switch (format) {
-                case 'cjson':
-                    assert.doesNotThrow(function() {
+            var expectedNames = Object.keys(expected);
 
-                        cjson.load(filename);
+            yoAssert.file(expectedNames);
 
-                    });
-                    break;
+            expectedNames.forEach(function(name) {
 
-                case 'json':
-                    assert.doesNotThrow(function() {
+                checkFormat(name, expected[name]);
 
-                        JSON.parse(fs.readFileSync(filename));
+            });
 
-                    });
-                    break;
+            done();
 
-                case 'ini':
-                    assert.doesNotThrow(function() {
+        });
 
-                        ini.decode(fs.readFileSync(filename).toString());
+    });
 
-                    });
-                    break;
+    it('creates expected files with correct format when jsx', function(done) {
 
-                case 'yaml':
-                    assert.doesNotThrow(function() {
-
-                        yaml.safeLoad(fs.readFileSync(filename).toString());
-
-                    });
-                    break;
-
-                // no default
-            }
-
-        };
+        helpers.mockPrompt(this.app, {
+            tools: [
+                'eslint',
+                'jscs',
+                'jshint',
+                'editorconfig',
+                'sublimelinter',
+                'js-beautify',
+                'scss-lint'
+            ],
+            jsx: 'yes'
+        });
 
         this.app.run(function() {
 

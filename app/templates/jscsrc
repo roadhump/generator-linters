@@ -1,5 +1,6 @@
 {
-    "requireCurlyBraces": [
+    <% if (opts.jsx === 'yes') { %>"esprima": "esprima-fb",
+    "fileExtensions": [".js", ".jsx"],<% } %>"requireCurlyBraces": [
         "if",
         "else",
         "for",

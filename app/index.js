@@ -102,6 +102,16 @@ module.exports = generators.Base.extend({
 
             }
         }, {
+            type: 'confirm',
+            name: 'jsx',
+            message: 'Support of JSX',
+            default: ['yes'],
+            when: function(res) {
+
+                return res.tools.indexOf('eslint') >= 0 || res.tools.indexOf('jscs') >= 0;
+
+            }
+        }, {
             type: 'list',
             name: 'indentStyle',
             message: 'Style of indent',
