@@ -137,7 +137,7 @@
     "disallowMultipleLineBreaks": true,
     "validateLineBreaks": "LF",
     <% if (opts.quotes !== 'both'){ %>
-    "validateQuoteMarks": "<%= opts.quotes === 'single' ? '\'' : '\\\"' %>",
+    "validateQuoteMarks": "<%- opts.quotes === 'single' ? '\'' : '\\\"' %>",
     <% } %>
     "validateIndentation": <%= opts.indentStyle === 'space' ? opts.indentSize : '"\\t"' %>,
     "disallowMixedSpacesAndTabs": true,
