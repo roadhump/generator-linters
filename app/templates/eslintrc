@@ -1,5 +1,5 @@
 {
-    <% if (opts.jsx === 'yes') { %>"ecmaFeatures": {
+    <% if (opts.jsx) { %>"ecmaFeatures": {
         "jsx": true
     },
 
@@ -174,7 +174,7 @@
         "vars-on-top": 0,
         "wrap-iife": 1,
         "wrap-regex": 0,
-        "yoda": [2, "never"]<% if (opts.jsx === 'yes') { %>,
+        "yoda": [2, "never"]<% if (opts.jsx) { %>,
 
         "react/display-name": 0,
         "react/jsx-boolean-value": [2, "always"],

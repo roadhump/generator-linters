@@ -96,9 +96,10 @@ describe('linters generator', function() {
                 'js-beautify',
                 'scss-lint'
             ],
-            jsx: 'no'
+            jsx: false
         });
 
+        this.app.options.skipInstall = true;
         this.app.run(function() {
 
             var expectedNames = Object.keys(expected);
@@ -129,15 +130,15 @@ describe('linters generator', function() {
                 'js-beautify',
                 'scss-lint'
             ],
-            jsx: 'yes'
+            jsx: true
         });
 
+        this.app.options.skipInstall = true;
         this.app.run(function() {
 
             var expectedNames = Object.keys(expected);
 
             yoAssert.file(expectedNames);
-
             expectedNames.forEach(function(name) {
 
                 checkFormat(name, expected[name]);

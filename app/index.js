@@ -105,7 +105,7 @@ module.exports = generators.Base.extend({
             type: 'confirm',
             name: 'jsx',
             message: 'Support of JSX',
-            default: ['yes'],
+            default: true,
             when: function(res) {
 
                 return res.tools.indexOf('eslint') >= 0 || res.tools.indexOf('jscs') >= 0;
@@ -190,5 +190,19 @@ module.exports = generators.Base.extend({
 
         }.bind(this));
 
+    },
+
+    install: function() {
+
+        this.npmInstall([
+            this.opts.tools.indexOf('jshint') >= 0 ? 'jshint' : '',
+            this.opts.tools.indexOf('eslint') >= 0 ? 'eslint' : '',
+            this.opts.tools.indexOf('jscs') >= 0 ? 'jscs' : '',
+
+            (this.opts.tools.indexOf('eslint') >= 0 && this.opts.jsx) ? 'eslint-plugin-react' : '',
+            (this.opts.tools.indexOf('jscs') >= 0 && this.opts.jsx) ? 'esprima-fb' : ''
+        ], {'--save-dev': true});
+
     }
+
 });
