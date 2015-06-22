@@ -103,9 +103,19 @@ module.exports = generators.Base.extend({
             }
         }, {
             type: 'confirm',
-            name: 'jsx',
-            message: 'Support of JSX',
+            name: 'es2015',
+            message: 'Support of ES2015',
             default: true,
+            when: function(res) {
+
+                return res.tools.indexOf('eslint') >= 0 || res.tools.indexOf('jscs') >= 0;
+
+            }
+        }, {
+            type: 'confirm',
+            name: 'react',
+            message: 'Support of React',
+            default: false,
             when: function(res) {
 
                 return res.tools.indexOf('eslint') >= 0 || res.tools.indexOf('jscs') >= 0;
@@ -166,6 +176,19 @@ module.exports = generators.Base.extend({
                 '**/bower_components/**',
                 '**/vendor/**'
             ];
+            this.opts.eslintPlugins = [];
+            if (this.opts.es2015) {
+
+                this.opts.eslintPlugins = this.opts.eslintPlugins.concat('arrow-function');
+
+            }
+
+            if (this.opts.react) {
+
+                this.opts.eslintPlugins = this.opts.eslintPlugins.concat('react');
+
+            }
+
             done();
 
         }.bind(this));
@@ -194,14 +217,23 @@ module.exports = generators.Base.extend({
 
     install: function() {
 
-        this.npmInstall([
+        var installs = [
             this.opts.tools.indexOf('jshint') >= 0 ? 'jshint' : '',
-            this.opts.tools.indexOf('eslint') >= 0 ? 'eslint' : '',
-            this.opts.tools.indexOf('jscs') >= 0 ? 'jscs' : '',
 
-            (this.opts.tools.indexOf('eslint') >= 0 && this.opts.jsx) ? 'eslint-plugin-react' : '',
-            (this.opts.tools.indexOf('jscs') >= 0 && this.opts.jsx) ? 'esprima-fb' : ''
-        ], {'--save-dev': true});
+            this.opts.tools.indexOf('jscs') >= 0 ? 'jscs' : '',
+            (this.opts.tools.indexOf('jscs') >= 0 && (this.opts.react || this.opts.es2015)) ? 'esprima-fb' : '',
+
+            this.opts.tools.indexOf('eslint') >= 0 ? 'eslint' : '',
+            (this.opts.tools.indexOf('eslint') >= 0 && this.opts.es2015) ? 'babel-eslint' : ''
+        ];
+
+        this.opts.eslintPlugins.forEach(function(v) {
+
+            installs = installs.concat('eslint-plugin-' + v);
+
+        });
+
+        this.npmInstall(installs, {'--save-dev': true});
 
     }
 

@@ -1,11 +1,22 @@
 {
-    <% if (opts.jsx) { %>"ecmaFeatures": {
-        "jsx": true
+    <% if (opts.es2015 || opts.react) { %>"parser": "babel-eslint",
+
+    <% } %><% if (opts.es2015 || opts.react) { %> "ecmaFeatures": {<% if (opts.es2015) { %>"arrowFunctions": true,
+        "blockBindings": true,
+        "defaultParams": true,
+        "destructuring": true,
+        "objectLiteralComputedProperties": true,
+        "objectLiteralShorthandMethods": true,
+        "objectLiteralShorthandProperties": true,
+        "templateStrings": true,<% } %>
+        "jsx": <%=opts.react %>
     },
 
-    "plugins": [
-       "react"
-     ],<% } %>"env": {
+    <% } %><% if (opts.eslintPlugins) { %>"plugins": [
+        <%- opts.eslintPlugins.map(function(v) {return JSON.stringify(v)}).join(',') %>
+    ],
+
+     <% } %>"env": {
         "browser": <%= (opts.environments.indexOf('browser') >= 0) %>,
         "node": <%= (opts.environments.indexOf('node') >= 0) %>,
         "amd": <%= (opts.environments.indexOf('amd') >= 0) %>
@@ -54,12 +65,9 @@
         "no-labels": 2,
         "no-lone-blocks": 2,
         "no-lonely-if": 2,
-        "no-loop-func": 2,
-        <% if (opts.environments.indexOf('node') >= 0) { %>
-        "no-mixed-requires": 2,
-        <% } else { %>
-        "no-mixed-requires": [0, false],
-        <% } %>
+        "no-loop-func": 2,<% if (opts.environments.indexOf('node') >= 0) { %>
+        "no-mixed-requires": 2,<% } else { %>
+        "no-mixed-requires": [0, false],<% } %>
         "no-mixed-spaces-and-tabs": [2, false],
         "linebreak-style": [2, "unix"],
         "no-multi-spaces": 2,
@@ -108,7 +116,7 @@
         "no-use-before-define": 2,
         "no-void": 2,
         "no-var": 0,
-        "no-warning-comments": [0, { "terms": ["todo", "fixme", "xxx"], "location": "start" }],
+        "no-warning-comments": [0, {"terms": ["todo", "fixme", "xxx"], "location": "start"}],
         "no-with": 2,
         "no-wrap-func": 2,
 
@@ -125,7 +133,7 @@
         "curly": [2, "all"],
         "default-case": 2,
         "dot-location": [2, "property"],
-        "dot-notation": [2, { "allowKeywords": false }],
+        "dot-notation": [2, {"allowKeywords": false}],
         "eol-last": 2,
         "eqeqeq": 2,
         "func-names": 0,
@@ -135,7 +143,7 @@
         "global-strict": [2, "<%= (opts.environments.indexOf('node') >= 0) ? 'always' : 'never' %>"],
         "guard-for-in": 1,
         "handle-callback-err": [2, "err"],
-        "key-spacing": [2, { "beforeColon": false, "afterColon": true }],
+        "key-spacing": [2, {"beforeColon": false, "afterColon": true}],
         "lines-around-comment": 0,
         "max-depth": [0, 3],
         "max-len": [1, 120, 4],
@@ -165,7 +173,7 @@
         "space-in-parens": [2, "never"],
         "space-infix-ops": 2,
         "space-return-throw-case": 2,
-        "space-unary-ops": [2, { "words": true, "nonwords": false }],
+        "space-unary-ops": [2, {"words": true, "nonwords": false}],
         "spaced-line-comment": [0, "always"],
         "strict": 2,
         "use-isnan": 2,
@@ -174,7 +182,7 @@
         "vars-on-top": 0,
         "wrap-iife": 1,
         "wrap-regex": 0,
-        "yoda": [2, "never"]<% if (opts.jsx) { %>,
+        "yoda": [2, "never"]<% if (opts.react) { %>,
 
         "react/display-name": 0,
         "react/jsx-boolean-value": [2, "always"],
@@ -191,6 +199,10 @@
         "react/prop-types": 1,
         "react/react-in-jsx-scope": 1,
         "react/self-closing-comp": 1,
-        "react/wrap-multilines": 1<% } %>
+        "react/wrap-multilines": 1<% } %><% if (opts.es2015) { %>,
+
+        "arrow-function/paren": 2,
+        "arrow-function/no-condition": 2,
+        "arrow-function/space": [2, {"before": true, "after": true}]<% } %>
     }
 }
