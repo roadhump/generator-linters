@@ -1,15 +1,9 @@
 {
     <% if (opts.es2015 || opts.react) { %>"parser": "babel-eslint",
 
-    <% } %><% if (opts.es2015 || opts.react) { %> "ecmaFeatures": {<% if (opts.es2015) { %>"arrowFunctions": true,
-        "blockBindings": true,
-        "defaultParams": true,
-        "destructuring": true,
-        "objectLiteralComputedProperties": true,
-        "objectLiteralShorthandMethods": true,
-        "objectLiteralShorthandProperties": true,
-        "templateStrings": true,<% } %>
-        "jsx": <%=opts.react %>
+    <% } %><% if (opts.react) { %> "ecmaFeatures": {
+        "jsx": true,
+        "experimentalObjectRestSpread": true
     },
 
     <% } %><% if (opts.eslintPlugins) { %>"plugins": [
@@ -19,7 +13,8 @@
      <% } %>"env": {
         "browser": <%= (opts.environments.indexOf('browser') >= 0) %>,
         "node": <%= (opts.environments.indexOf('node') >= 0) %>,
-        "amd": <%= (opts.environments.indexOf('amd') >= 0) %>
+        "amd": <%= (opts.environments.indexOf('amd') >= 0) %>,
+        "es6": <%= (opts.es2015) %>
     },
 
     "rules": {
