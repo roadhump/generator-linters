@@ -177,11 +177,6 @@ module.exports = generators.Base.extend({
                 '**/vendor/**'
             ];
             this.opts.eslintPlugins = [];
-            if (this.opts.es2015) {
-
-                this.opts.eslintPlugins = this.opts.eslintPlugins.concat('arrow-function');
-
-            }
 
             if (this.opts.react) {
 
