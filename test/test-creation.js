@@ -1,3 +1,4 @@
+/* eslint  no-invalid-this:0 */
 'use strict';
 var path = require('path');
 var fs = require('fs');
