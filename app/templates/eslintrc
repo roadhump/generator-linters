@@ -1,16 +1,15 @@
 {
-    <% if (opts.es2015 || opts.react) { %>"parser": "babel-eslint",
-
-    <% } %><% if (opts.react) { %> "ecmaFeatures": {
-        "jsx": true,
-        "experimentalObjectRestSpread": true
+    <% if (opts.es2015 || opts.react) { %>"ecmaFeatures": {
+        "experimentalObjectRestSpread": true,
+        "jsx": <%= (opts.react) %>,
+        "modules": true
     },
 
-    <% } %><% if (opts.eslintPlugins) { %>"plugins": [
+    <% } %><% if (opts.eslintPlugins.length) { %>"plugins": [
         <%- opts.eslintPlugins.map(function(v) {return JSON.stringify(v)}).join(',') %>
     ],
 
-     <% } %>"env": {
+    <% } %>"env": {
         "browser": <%= (opts.environments.indexOf('browser') >= 0) %>,
         "node": <%= (opts.environments.indexOf('node') >= 0) %>,
         "amd": <%= (opts.environments.indexOf('amd') >= 0) %>,
@@ -20,8 +19,10 @@
     "rules": {
         "no-alert": 2,
         "no-array-constructor": 2,
+        "no-arrow-condition": 2,
         "no-bitwise": 2,
         "no-caller": 2,
+        "no-case-declarations": 2,
         "no-catch-shadow": <%= (opts.environments.indexOf('node') >= 0) ? 0 : 2 %>,
         "no-class-assign": 2,
         "no-cond-assign": 2,
@@ -41,6 +42,7 @@
         "no-empty": 2,
         "no-empty-character-class": 2,
         "no-empty-label": 2,
+        "no-empty-pattern": 2,
         "no-eq-null": 2,
         "no-eval": 2,
         "no-ex-assign": 2,
@@ -72,6 +74,7 @@
         "no-multi-str": 2,
         "no-multiple-empty-lines": [2, {"max": 1}],
         "no-native-reassign": 2,
+        "no-negated-condition": 2,
         "no-negated-in-lhs": 2,
         "no-nested-ternary": 2,
         "no-new": 2,
@@ -121,8 +124,10 @@
         "no-var": 0,
         "no-warning-comments": [0, {"terms": ["todo", "fixme", "xxx"], "location": "start"}],
         "no-with": 2,
+        "no-magic-numbers": 2,
 
         "array-bracket-spacing": [2, "never"],
+        "arrow-body-style": [2, "as-needed"],
         "arrow-parens": 2,
         "arrow-spacing": 2,
         "accessor-pairs": 0,
@@ -204,6 +209,7 @@
         "yoda": [2, "never"]<% if (opts.react) { %>,
 
         "react/display-name": 0,
+        "react/forbid-prop-types": 0,
         "react/jsx-boolean-value": [2, "always"],
         "react/jsx-closing-bracket-location": 2,
         "react/jsx-curly-spacing": [2, "never"],
@@ -212,22 +218,23 @@
         "react/jsx-no-duplicate-props": 2,
         "react/jsx-no-literals": 2,
         "react/jsx-no-undef": 2,
-        "react/jsx-quotes": [2, "double"],
-        "react/jsx-sort-props": 0,
         "react/jsx-sort-prop-types": 2,
+        "react/jsx-sort-props": 2,
         "react/jsx-uses-react": 2,
         "react/jsx-uses-vars": 2,
         "react/no-danger": 0,
         "react/no-did-mount-set-state": 0,
         "react/no-did-update-set-state": 2,
+        "react/no-direct-mutation-state": 2,
         "react/no-multi-comp": 2,
         "react/no-set-state": 0,
         "react/no-unknown-property": 2,
+        "react/prefer-es6-class": 2,
         "react/prop-types": 2,
         "react/react-in-jsx-scope": 2,
         "react/require-extension": 0,
         "react/self-closing-comp": 2,
-        "react/sort-comp": [2, {"order": ["lifecycle", "rendering", "everything-else"]}],
+        "react/sort-comp": [2, {"order": ["lifecycle", "render", "/^render.+$/", "/^handle.+$/", "everything-else"]}],
         "react/wrap-multilines": 2<% } %>
     }
 }
