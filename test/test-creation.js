@@ -96,7 +96,7 @@ describe('linters generator', function() {
                 'js-beautify',
                 'scss-lint'
             ],
-            jsx: false
+            es2015: false
         });
 
         this.app.options.skipInstall = true;
@@ -130,7 +130,8 @@ describe('linters generator', function() {
                 'js-beautify',
                 'scss-lint'
             ],
-            jsx: true
+            es2015: true,
+            react: true
         });
 
         this.app.options.skipInstall = true;
