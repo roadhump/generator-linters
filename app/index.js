@@ -15,10 +15,7 @@ module.exports = generators.Base.extend({
             eslint: {
                 title: 'ESLint',
                 url: 'http://eslint.org',
-                files: [{
-                    from: '_eslint.json',
-                    to: 'eslint.json'
-                }, 'eslintignore'],
+                files: ['eslintrc.json', 'eslintignore'],
                 isDefault: true
             },
             jshint: {
