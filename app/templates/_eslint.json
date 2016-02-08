@@ -245,6 +245,11 @@
         "react/require-extension": 0,
         "react/self-closing-comp": 2,
         "react/sort-comp": [2, {"order": ["lifecycle", "render", "/^render.+$/", "/^handle.+$/", "everything-else"]}],
-        "react/wrap-multilines": 2<% } %>
+        "react/wrap-multilines": 2<% } %><% if (opts.mocha) { %>,
+
+        "mocha/handle-done-callback": 2,
+        "mocha/no-exclusive-tests": 2,
+        "mocha/no-synchronous-tests": 0,
+        "mocha/no-global-tests": 2<% } %>
     }
 }

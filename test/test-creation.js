@@ -131,7 +131,8 @@ describe('linters generator', function() {
                 'scss-lint'
             ],
             es2015: true,
-            react: true
+            react: true,
+            mocha: true
         });
 
         this.app.options.skipInstall = true;

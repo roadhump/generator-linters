@@ -125,6 +125,16 @@ module.exports = generators.Base.extend({
 
             }
         }, {
+            type: 'confirm',
+            name: 'mocha',
+            message: 'Support of Mocha',
+            default: false,
+            when: function(res) {
+
+                return res.tools.indexOf('eslint') >= 0;
+
+            }
+        }, {
             type: 'list',
             name: 'indentStyle',
             message: 'Style of indent',
@@ -184,6 +194,12 @@ module.exports = generators.Base.extend({
             if (this.opts.react) {
 
                 this.opts.eslintPlugins = this.opts.eslintPlugins.concat('react');
+
+            }
+
+            if (this.opts.mocha) {
+
+                this.opts.eslintPlugins = this.opts.eslintPlugins.concat('mocha');
 
             }
 
