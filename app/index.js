@@ -5,6 +5,22 @@ var fs = require('fs');
 var chalk = require('chalk');
 var generators = require('yeoman-generator');
 
+var includes = function(arr, val) {
+
+    return arr.indexOf(val) >= 0; // eslint-disable-line no-magic-numbers
+
+};
+
+var forTools = function(sourceTools, searchTools) {
+
+    return sourceTools.every(function(tool) {
+
+        return includes(searchTools, tool);
+
+    });
+
+};
+
 module.exports = generators.Base.extend({
 
     init: function() {
@@ -98,7 +114,7 @@ module.exports = generators.Base.extend({
             choices: ['browser', 'node', 'amd'],
             when: function(res) {
 
-                return res.tools.indexOf('jshint') >= 0 || res.tools.indexOf('eslint') >= 0;
+                return forTools(res.tools, ['jshint', 'eslint']);
 
             }
         }, {
@@ -108,7 +124,7 @@ module.exports = generators.Base.extend({
             default: true,
             when: function(res) {
 
-                return res.tools.indexOf('eslint') >= 0 || res.tools.indexOf('jscs') >= 0;
+                return forTools(res.tools, ['eslint', 'jscs']);
 
             }
         }, {
@@ -118,7 +134,7 @@ module.exports = generators.Base.extend({
             default: false,
             when: function(res) {
 
-                return res.tools.indexOf('eslint') >= 0 || res.tools.indexOf('jscs') >= 0;
+                return forTools(res.tools, ['eslint', 'jscs']);
 
             }
         }, {
@@ -128,7 +144,7 @@ module.exports = generators.Base.extend({
             default: false,
             when: function(res) {
 
-                return res.tools.indexOf('eslint') >= 0;
+                return forTools(res.tools, ['eslint']);
 
             }
         }, {
@@ -139,7 +155,7 @@ module.exports = generators.Base.extend({
             choices: ['space', 'tab'],
             when: function(res) {
 
-                return !(res.tools.length === 1 && res.tools[0] === 'sublimelinter');
+                return forTools(res.tools, ['eslint', 'jscs']);
 
             }
         }, {
@@ -149,7 +165,7 @@ module.exports = generators.Base.extend({
             default: 4,
             when: function(res) {
 
-                return !(res.tools.length === 1 && res.tools[0] === 'sublimelinter');
+                return forTools(res.tools, ['eslint', 'jshint', 'jscs', 'scss-lint', 'js-beautify', 'editorconfig']);
 
             }
         }, {
@@ -169,11 +185,7 @@ module.exports = generators.Base.extend({
             }],
             when: function(res) {
 
-                return ['eslint', 'jshint', 'jscs', 'scss-lint'].some(function(v) {
-
-                    return res.tools.indexOf(v) >= 0;
-
-                });
+                return forTools(res.tools, ['eslint', 'jshint', 'jscs', 'scss-lint']);
 
             }
         }];
@@ -208,11 +220,13 @@ module.exports = generators.Base.extend({
 
     app: function() {
 
+        var fileNames = [];
+
         this.opts.tools.forEach(function(toolName) {
 
             if (this.tools[toolName]) {
 
-                var fileNames = this.tools[toolName].files;
+                fileNames = this.tools[toolName].files;
 
                 fileNames.forEach(function(fileName) {
 
@@ -237,13 +251,13 @@ module.exports = generators.Base.extend({
     install: function() {
 
         var installs = [
-            this.opts.tools.indexOf('jshint') >= 0 ? 'jshint' : '',
+            includes(this.opts.tools, 'jshint') ? 'jshint' : '',
 
-            this.opts.tools.indexOf('jscs') >= 0 ? 'jscs' : '',
-            (this.opts.tools.indexOf('jscs') >= 0 && (this.opts.react || this.opts.es2015)) ? 'esprima-fb' : '',
+            includes(this.opts.tools, 'jscs') ? 'jscs' : '',
+            (includes(this.opts.tools, 'jscs') && (this.opts.react || this.opts.es2015)) ? 'esprima-fb' : '',
 
-            this.opts.tools.indexOf('eslint') >= 0 ? 'eslint' : '',
-            (this.opts.tools.indexOf('eslint') >= 0 && this.opts.es2015) ? 'babel-eslint' : ''
+            includes(this.opts.tools, 'eslint') ? 'eslint@next' : '',
+            (includes(this.opts.tools, 'eslint') && this.opts.es2015) ? 'babel-eslint' : ''
         ];
 
         this.opts.eslintPlugins.forEach(function(v) {
