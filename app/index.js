@@ -13,7 +13,7 @@ var includes = function(arr, val) {
 
 var forTools = function(sourceTools, searchTools) {
 
-    return searchTools.every(function(tool) {
+    return searchTools.some(function(tool) {
 
         return includes(sourceTools, tool);
 
