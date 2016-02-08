@@ -33,7 +33,7 @@ describe('linters generator', function() {
     });
 
     var expected = {
-        '.eslintrc': 'cjson',
+        'eslint.json': 'cjson',
         '.eslintignore': 'ini',
         '.jscsrc': 'cjson',
         '.editorconfig': 'ini',
