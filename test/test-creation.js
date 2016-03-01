@@ -26,7 +26,8 @@ describe('linters generator', function() {
             this.app = helpers.createGenerator('linters:app', [
                 '../../app'
             ]);
-            done();
+
+            return done();
 
         }.bind(this));
 
