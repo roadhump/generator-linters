@@ -256,7 +256,7 @@ module.exports = generators.Base.extend({
             includes(this.opts.tools, 'jscs') ? 'jscs' : '',
             (includes(this.opts.tools, 'jscs') && (this.opts.react || this.opts.es2015)) ? 'esprima-fb' : '',
 
-            includes(this.opts.tools, 'eslint') ? 'eslint@next' : '',
+            includes(this.opts.tools, 'eslint') ? 'eslint' : '',
             (includes(this.opts.tools, 'eslint') && this.opts.es2015) ? 'babel-eslint' : ''
         ];
 
