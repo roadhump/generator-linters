@@ -34,18 +34,6 @@ module.exports = generators.Base.extend({
                 files: ['eslintrc.json', 'eslintignore'],
                 isDefault: true
             },
-            jshint: {
-                title: 'JSHint',
-                url: 'http://jshint.com',
-                files: ['jshintrc', 'jshintignore'],
-                isDefault: false
-            },
-            jscs: {
-                title: 'JSCS',
-                url: 'https://github.com/mdevils/node-jscs',
-                files: ['jscsrc'],
-                isDefault: true
-            },
             editorconfig: {
                 title: 'EditorConfig',
                 url: 'http://editorconfig.org',
@@ -57,18 +45,6 @@ module.exports = generators.Base.extend({
                 url: 'http://sublimelinter.readthedocs.org',
                 files: ['sublimelinterrc'],
                 isDefault: true
-            },
-            'js-beautify': {
-                title: 'JS Beautifier',
-                url: 'http://jsbeautifier.org',
-                files: ['jsbeautifyrc'],
-                isDefault: true
-            },
-            'scss-lint': {
-                title: 'SCSS-Lint',
-                url: 'https://github.com/causes/scss-lint',
-                files: ['scss-lint.yml'],
-                isDefault: false
             }
         };
 
@@ -114,7 +90,7 @@ module.exports = generators.Base.extend({
             choices: ['browser', 'node', 'amd'],
             when: function(res) {
 
-                return forTools(res.tools, ['jshint', 'eslint']);
+                return forTools(res.tools, ['eslint']);
 
             }
         }, {
@@ -124,7 +100,7 @@ module.exports = generators.Base.extend({
             default: true,
             when: function(res) {
 
-                return forTools(res.tools, ['eslint', 'jscs']);
+                return forTools(res.tools, ['eslint']);
 
             }
         }, {
@@ -134,7 +110,7 @@ module.exports = generators.Base.extend({
             default: false,
             when: function(res) {
 
-                return forTools(res.tools, ['eslint', 'jscs']);
+                return forTools(res.tools, ['eslint']);
 
             }
         }, {
@@ -155,7 +131,7 @@ module.exports = generators.Base.extend({
             choices: ['space', 'tab'],
             when: function(res) {
 
-                return forTools(res.tools, ['eslint', 'jscs']);
+                return forTools(res.tools, ['eslint']);
 
             }
         }, {
@@ -165,7 +141,7 @@ module.exports = generators.Base.extend({
             default: 4,
             when: function(res) {
 
-                return forTools(res.tools, ['eslint', 'jshint', 'jscs', 'scss-lint', 'js-beautify', 'editorconfig']);
+                return forTools(res.tools, ['eslint', 'editorconfig']);
 
             }
         }, {
@@ -185,7 +161,7 @@ module.exports = generators.Base.extend({
             }],
             when: function(res) {
 
-                return forTools(res.tools, ['eslint', 'jshint', 'jscs', 'scss-lint']);
+                return forTools(res.tools, ['eslint']);
 
             }
         }];
@@ -251,11 +227,6 @@ module.exports = generators.Base.extend({
     install: function() {
 
         var installs = [
-            includes(this.opts.tools, 'jshint') ? 'jshint' : '',
-
-            includes(this.opts.tools, 'jscs') ? 'jscs' : '',
-            (includes(this.opts.tools, 'jscs') && (this.opts.react || this.opts.es2015)) ? 'esprima-fb' : '',
-
             includes(this.opts.tools, 'eslint') ? 'eslint' : '',
             (includes(this.opts.tools, 'eslint') && this.opts.es2015) ? 'babel-eslint' : ''
         ];

@@ -36,13 +36,8 @@ describe('linters generator', function() {
     var expected = {
         '.eslintrc.json': 'cjson',
         '.eslintignore': 'ini',
-        '.jscsrc': 'cjson',
         '.editorconfig': 'ini',
-        '.jshintrc': 'cjson',
-        '.jshintignore': 'ini',
-        '.sublimelinterrc': 'json',
-        '.jsbeautifyrc': 'json',
-        '.scss-lint.yml': 'yaml'
+        '.sublimelinterrc': 'json'
     };
 
     var checkFormat = function(filename, format) {
@@ -90,12 +85,8 @@ describe('linters generator', function() {
         helpers.mockPrompt(this.app, {
             tools: [
                 'eslint',
-                'jscs',
-                'jshint',
                 'editorconfig',
-                'sublimelinter',
-                'js-beautify',
-                'scss-lint'
+                'sublimelinter'
             ],
             es2015: false
         });
@@ -124,12 +115,8 @@ describe('linters generator', function() {
         helpers.mockPrompt(this.app, {
             tools: [
                 'eslint',
-                'jscs',
-                'jshint',
                 'editorconfig',
-                'sublimelinter',
-                'js-beautify',
-                'scss-lint'
+                'sublimelinter'
             ],
             es2015: true,
             react: true,
