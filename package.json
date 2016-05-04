@@ -29,8 +29,9 @@
     "editorconfig"
   ],
   "dependencies": {
-    "yeoman-generator": "~0.20.1",
-    "chalk": "^1.0.0"
+    "chalk": "^1.0.0",
+    "yeoman-environment": "1.1.0",
+    "yeoman-generator": "0.20.1"
   },
   "devDependencies": {
     "chai": "^3.0.0",
