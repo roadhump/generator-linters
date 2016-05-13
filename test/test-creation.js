@@ -24,7 +24,7 @@ describe('linters generator', function() {
             }
 
             this.app = helpers.createGenerator('linters:app', [
-                '../../app'
+                '../../app',
             ]);
 
             return done();
@@ -37,7 +37,7 @@ describe('linters generator', function() {
         '.eslintrc.json': 'cjson',
         '.eslintignore': 'ini',
         '.editorconfig': 'ini',
-        '.sublimelinterrc': 'json'
+        '.sublimelinterrc': 'json',
     };
 
     var checkFormat = function(filename, format) {
@@ -86,9 +86,9 @@ describe('linters generator', function() {
             tools: [
                 'eslint',
                 'editorconfig',
-                'sublimelinter'
+                'sublimelinter',
             ],
-            es2015: false
+            es2015: false,
         });
 
         this.app.options.skipInstall = true;
@@ -116,11 +116,11 @@ describe('linters generator', function() {
             tools: [
                 'eslint',
                 'editorconfig',
-                'sublimelinter'
+                'sublimelinter',
             ],
             es2015: true,
             react: true,
-            mocha: true
+            mocha: true,
         });
 
         this.app.options.skipInstall = true;

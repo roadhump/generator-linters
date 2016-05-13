@@ -32,20 +32,20 @@ module.exports = generators.Base.extend({
                 title: 'ESLint',
                 url: 'http://eslint.org',
                 files: ['eslintrc.json', 'eslintignore'],
-                isDefault: true
+                isDefault: true,
             },
             editorconfig: {
                 title: 'EditorConfig',
                 url: 'http://editorconfig.org',
                 files: ['editorconfig'],
-                isDefault: true
+                isDefault: true,
             },
             sublimelinter: {
                 title: 'SublimeLinter',
                 url: 'http://sublimelinter.readthedocs.org',
                 files: ['sublimelinterrc'],
-                isDefault: true
-            }
+                isDefault: true,
+            },
         };
 
     },
@@ -60,7 +60,7 @@ module.exports = generators.Base.extend({
 
             return {
                 name: tool.title + ' ' + chalk.gray(tool.url),
-                value: name
+                value: name,
             };
 
         }.bind(this));
@@ -81,7 +81,7 @@ module.exports = generators.Base.extend({
             name: 'tools',
             message: 'What JavaScript linter or tool should be used?',
             default: toolsDefaults,
-            choices: toolsChoices
+            choices: toolsChoices,
         }, {
             type: 'checkbox',
             name: 'environments',
@@ -92,7 +92,7 @@ module.exports = generators.Base.extend({
 
                 return forTools(res.tools, ['eslint']);
 
-            }
+            },
         }, {
             type: 'confirm',
             name: 'es2015',
@@ -102,7 +102,7 @@ module.exports = generators.Base.extend({
 
                 return forTools(res.tools, ['eslint']);
 
-            }
+            },
         }, {
             type: 'confirm',
             name: 'react',
@@ -112,7 +112,7 @@ module.exports = generators.Base.extend({
 
                 return forTools(res.tools, ['eslint']);
 
-            }
+            },
         }, {
             type: 'confirm',
             name: 'mocha',
@@ -122,7 +122,7 @@ module.exports = generators.Base.extend({
 
                 return forTools(res.tools, ['eslint']);
 
-            }
+            },
         }, {
             type: 'list',
             name: 'indentStyle',
@@ -133,7 +133,7 @@ module.exports = generators.Base.extend({
 
                 return forTools(res.tools, ['eslint']);
 
-            }
+            },
         }, {
             type: 'input',
             name: 'indentSize',
@@ -143,7 +143,7 @@ module.exports = generators.Base.extend({
 
                 return forTools(res.tools, ['eslint', 'editorconfig']);
 
-            }
+            },
         }, {
             type: 'list',
             name: 'quotes',
@@ -151,19 +151,19 @@ module.exports = generators.Base.extend({
             default: 'single',
             choices: [{
                 name: 'both',
-                value: 'both'
+                value: 'both',
             }, {
                 name: 'single',
-                value: 'single'
+                value: 'single',
             }, {
                 name: 'double',
-                value: 'double'
+                value: 'double',
             }],
             when: function(res) {
 
                 return forTools(res.tools, ['eslint']);
 
-            }
+            },
         }];
 
         this.prompt(prompts, function(props) {
@@ -172,7 +172,7 @@ module.exports = generators.Base.extend({
             this.opts.excludes = [
                 '**/node_modules/**',
                 '**/bower_components/**',
-                '**/vendor/**'
+                '**/vendor/**',
             ];
             this.opts.eslintPlugins = [];
 
@@ -228,7 +228,7 @@ module.exports = generators.Base.extend({
 
         var installs = [
             includes(this.opts.tools, 'eslint') ? 'eslint' : '',
-            (includes(this.opts.tools, 'eslint') && this.opts.es2015) ? 'babel-eslint' : ''
+            (includes(this.opts.tools, 'eslint') && this.opts.es2015) ? 'babel-eslint' : '',
         ];
 
         this.opts.eslintPlugins.forEach(function(v) {
@@ -239,6 +239,6 @@ module.exports = generators.Base.extend({
 
         this.npmInstall(installs, {'--save-dev': true});
 
-    }
+    },
 
 });
